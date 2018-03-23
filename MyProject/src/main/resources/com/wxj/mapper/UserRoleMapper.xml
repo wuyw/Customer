@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxj.mapper.UserRoleMapper">
+    <resultMap id="RoleInfo" type="com.wxj.bean.RoleBean">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="rolename" jdbcType="VARCHAR" property="roleName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <collection property="rolePermissions" select="getPermissionByRoleId" column="id">
+        </collection>
+    </resultMap>
+    <resultMap id="PermissionsInfo" type="com.wxj.bean.base.RolePermission">
+        <result column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="permissionid" jdbcType="VARCHAR" property="permissionId"/>
+        <result column="roleid" jdbcType="VARCHAR" property="roleId"/>
+        <association property="permission" select="getPermissionById" column="id=permissionid">
+        </association>
+    </resultMap>
+    <resultMap id="PermissionBean" type="com.wxj.bean.base.Permission">
+        <result property="id" jdbcType="VARCHAR"  column="id"/>
+        <result property="name" jdbcType="VARCHAR"  column="name"/>
+        <result property="sign" jdbcType="VARCHAR"  column="sign"/>
+        <result property="description" jdbcType="VARCHAR"  column="description"/>
+        <result property="createtime" jdbcType="TIMESTAMP"  column="createtime"/>
+        <association property="module" select="getModuleById" column="id=moduleid">
+        </association>
+    </resultMap>
+    <resultMap id="ModuleBean" type="com.wxj.bean.base.Module">
+        <result property="id" jdbcType="VARCHAR" column="id"/>
+        <result property="name" jdbcType="VARCHAR" column="name"/>
+        <result property="sign" jdbcType="VARCHAR" column="sign"/>
+        <result property="description" jdbcType="VARCHAR" column="description"/>
+        <result property="createtime" jdbcType="TIMESTAMP" column="createtime"/>
+    </resultMap>
+    <select id="getRoleByUserId" resultMap="RoleInfo">
+      SELECT tb_base_role.id,tb_base_role.rolename,tb_base_role.remark AS remark FROM tb_base_user_role
+      LEFT JOIN tb_base_role ON tb_base_role.id=tb_base_user_role.roleid
+      WHERE tb_base_user_role.userid=#{id}
+    </select>
+    <select id="getPermissionByRoleId" resultMap="PermissionsInfo">
+      SELECT id,permissionid,roleid FROM tb_base_role_permission WHERE  roleid= #{id}
+    </select>
+    <select id="getPermissionById" resultMap="PermissionBean">
+        SELECT * FROM tb_base_permission  WHERE id=#{id}
+    </select>
+    <select id="getModuleById" resultMap="ModuleBean">
+        SELECT * FROM tb_base_module WHERE id = #{id}
+    </select>
+</mapper>
