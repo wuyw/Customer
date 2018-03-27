@@ -94,7 +94,7 @@ public class StatelessAuthorizingRealm extends AuthorizingRealm {
                 //密码验证失败
                 throw new DisabledAccountException();
             }
-            ShiroUser shiroUser = new ShiroUser(String.valueOf(user.getId()), user.getAccountEmail(), jwt);
+            ShiroUser shiroUser = new ShiroUser(String.valueOf(user.getId()), user.getAccount(), jwt);
             shiroUser.setUser(user);
             redisUtil.setAuthInfo(shiroUser, jwt);
             // 这里可以缓存认证

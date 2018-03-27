@@ -75,7 +75,7 @@ public class LoginController {
         redisUtil.remove(RedisUtil.REDIS_KEY + "auth_info:" + token);
         response.setCode(ResponseBean.CODE_SUCCESS);
         String ip = LogAspect.getIpAddress(request);
-        logUtil.addLog(ip,user.getAccountEmail() + "用户退出登录", user.getAccountEmail());
+        logUtil.addLog(ip,user.getAccount() + "用户退出登录", user.getAccount());
         return response;
     }
 
