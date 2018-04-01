@@ -1,10 +1,10 @@
 package com.wxj.controller;
 
 import com.wxj.bean.ResponseBean;
-import com.wxj.log.Log;
+import com.wxj.bean.base.User;
+import com.wxj.bean.dto.UserDto;
 import com.wxj.service.UserService;
 import com.wxj.util.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,19 +16,64 @@ public class UserController {
     UserService userService;
 
     /**
-     * 获取用户信息 --demo
-     *
+     * 新增客服人员
+     * @param user
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/user/info")
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/save")
     @ResponseBody
-    @RequiresPermissions("User:select")
-    @Log(message = "查询用户信息")
-    public ResponseBean getUserInfo() {
-        Integer userId = SecurityUtils.getLoginUser().getId();
-        return userService.getUserInfo(String.valueOf(userId));
+    public ResponseBean insertUser(@RequestBody User user) {
+        Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        user.setCompanyId(companyId);
+        return userService.insertUser(user);
+    }
+
+    /**
+     * 查询客服人员列表分页
+     * @param page
+     * @param perPage
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/list")
+    @ResponseBody
+    public ResponseBean userList(@RequestHeader(value = "page") Integer page,@RequestHeader(value = "perPage") Integer perPage) {
+        Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        return userService.getUserList(page,perPage,companyId);
     }
 
 
-}
+    /**
+     * 通过ID查询客服人员信息
+     * @param id
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/info")
+    @ResponseBody
+    public ResponseBean userList(@RequestParam Integer id) {
+        return userService.getUserById(id);
+    }
 
+    /**
+     * 模糊查询
+     * @param user
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/search")
+    @ResponseBody
+    public ResponseBean userSearch(@RequestBody User user,@RequestHeader(value = "page") Integer page,@RequestHeader(value = "perPage") Integer perPage) {
+        Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        user.setCompanyId(companyId);
+        return userService.getUserByParams(user,page,perPage);
+    }
+
+    /**
+     * 删除客服人员
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/delete")
+    @ResponseBody
+    public ResponseBean delUser(@RequestParam Integer id){
+        return userService.delUser(id);
+    }
+
+}

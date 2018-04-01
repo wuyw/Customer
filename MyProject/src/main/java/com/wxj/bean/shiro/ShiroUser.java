@@ -5,6 +5,7 @@ package com.wxj.bean.shiro;
 
 
 import com.wxj.bean.base.Module;
+import com.wxj.bean.base.Company;
 import com.wxj.bean.base.User;
 
 import java.io.Serializable;

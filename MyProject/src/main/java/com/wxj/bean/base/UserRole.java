@@ -25,7 +25,7 @@ public class UserRole {
     /**
      * 用户详情
      */
-    private User user;
+    private Company user;
 
     public String getId() {
         return id;
@@ -59,11 +59,11 @@ public class UserRole {
         this.role = role;
     }
 
-    public User getUser() {
+    public Company getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(Company user) {
         this.user = user;
     }
 }

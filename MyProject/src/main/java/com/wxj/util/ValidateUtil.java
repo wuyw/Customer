@@ -1,10 +1,13 @@
 package com.wxj.util;
 
 
+import org.springframework.stereotype.Component;
+
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Component
 public class ValidateUtil {
 
     private static final String MOBILENUM_REGULAR = "^(1[3,4,5,7,8])\\d{9}$"; //手机号

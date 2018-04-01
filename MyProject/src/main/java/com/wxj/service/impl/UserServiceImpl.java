@@ -2,9 +2,12 @@ package com.wxj.service.impl;
 
 import com.wxj.bean.LoginUser;
 import com.wxj.bean.ResponseBean;
+import com.wxj.bean.base.Company;
 import com.wxj.bean.base.User;
+import com.wxj.bean.dto.UserDto;
 import com.wxj.mapper.UserMapper;
 import com.wxj.service.UserService;
+import com.wxj.service.CompanyService;
 import com.wxj.shiro.StatelessAuthenticationToken;
 import com.wxj.util.JsonWebTokenUtil;
 import com.wxj.util.LogUtil;
@@ -14,15 +17,17 @@ import org.apache.log4j.Logger;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private Logger logger = Logger.getLogger(UserService.class);
+    private Logger logger = Logger.getLogger(CompanyService.class);
 
     @Value("${jwt.key}")
     private String jwtKey;
@@ -33,11 +38,28 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-    @Override
-    public User getUserByUserNameAndDomain(String username,String domain) {
-        return userMapper.getUserByUsernameAndDomain(username,domain);
+    public ResponseBean insertUser(User user){
+        ResponseBean responseBean = new ResponseBean();
+        //判断信息是否为空
+        if (!user.isValid()){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        // 插入数据
+        int i= userMapper.insertUser(user);
+        if (i > 0){
+            responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        } else {
+            responseBean.setCode(ResponseBean.CODE_FAIL);
+        }
+        return responseBean;
     }
 
+    /**
+     * 登录
+     * @param loginUser
+     * @return
+     */
     @Override
     public ResponseBean toLogin(LoginUser loginUser) {
         ResponseBean responseBean = new ResponseBean();
@@ -74,15 +96,119 @@ public class UserServiceImpl implements UserService {
         return responseBean;
     }
 
-    @Override
-    public ResponseBean getUserInfo(String userId) {
+    /**
+     * 根据公司ID和账号查询用户
+     * @param companyId,account
+     * @return
+     */
+    public User getUserByCompanyIdAndAccount(Integer companyId,String account){
+     User user = userMapper.getUserByCompanyIdAndAccount(companyId,account);
+        return user;
+    }
+
+    /**
+     * 查询客服人员分页
+     * @param page
+     * @param perPage
+     * @param companyId
+     * @return
+     */
+    public ResponseBean getUserList(Integer page,Integer perPage,Integer companyId){
         ResponseBean responseBean = new ResponseBean();
         Map<String, Object> result = new HashMap<>();
+        //判断参数是否为空
+        if (companyId == null || page == null || perPage == null) {
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        int start = (page-1)*perPage;
+        int end = perPage*page;
+        List<User> userList = userMapper.getUserList(companyId,start,end);
+        if (userList.isEmpty()){
+            responseBean.setCode(ResponseBean.CODE_NOAUTH);
+            return responseBean;
+        }
+        int numPage = getUserCount(companyId);
+        result.put("numPage",numPage);
+        result.put("userList",userList);
         responseBean.setCode(ResponseBean.CODE_SUCCESS);
-        User user = userMapper.getUserInfo(userId);
-        result.put("user",user);
         responseBean.setResult(result);
         return responseBean;
     }
 
+    /**
+     * 获取公司客服人员数量
+     * @param companyId
+     * @return
+     */
+    public int getUserCount(Integer companyId){
+        return userMapper.getUserCount(companyId);
+    }
+
+    /**
+     * 通过ID查询客服信息
+     * @param id
+     * @return
+     */
+    public ResponseBean getUserById(Integer id){
+        ResponseBean responseBean = new ResponseBean();
+        Map<String, Object> result = new HashMap<>();
+        if (id == null){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        User user = userMapper.getUserById(id);
+        if (ValidateUtil.isEmpty(user)){
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
+            return responseBean;
+        }
+        result.put("user",user);
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        responseBean.setResult(result);
+        return responseBean;
+    }
+
+    /**
+     * 模糊查询
+     * @param user
+     * @param page
+     * @param perPage
+     * @return
+     */
+    public ResponseBean getUserByParams(User user,Integer page,Integer perPage){
+        ResponseBean responseBean = new ResponseBean();
+        Map<String, Object> result = new HashMap<>();
+        Integer start = (page-1)*perPage;
+        Integer end = perPage*page;
+        List<User> userList = userMapper.getUserListByParams(user.getCompanyId(),user.getRole(),user.getName(),user.getNickname(),user.getAccount(),user.getMobile(),start,end);
+        if (userList.isEmpty()){
+            responseBean.setCode(ResponseBean.CODE_NOAUTH);
+            return responseBean;
+        }
+        result.put("userList",userList);
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        responseBean.setResult(result);
+        return responseBean;
+    }
+
+    /**
+     * 删除客服人员
+     * @param id
+     * @return
+     */
+    public ResponseBean delUser(Integer id){
+        ResponseBean responseBean = new ResponseBean();
+        if (id == null) {
+            responseBean.setCode(ResponseBean.CODE_NOAUTH);
+            return responseBean;
+        }
+        //删除操作
+        int i = userMapper.delUser(id);
+        if (i<=0){
+            responseBean.setCode(ResponseBean.CODE_FAIL);
+        } else {
+            responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        }
+        return responseBean;
+    }
 }

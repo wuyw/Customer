@@ -2,12 +2,10 @@ package com.wxj.shiro;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wxj.bean.*;
-import com.wxj.bean.base.Permission;
-import com.wxj.bean.base.Role;
-import com.wxj.bean.base.RolePermission;
-import com.wxj.bean.base.User;
+import com.wxj.bean.base.*;
 import com.wxj.bean.shiro.ShiroUser;
 import com.wxj.service.UserRoleService;
+import com.wxj.service.CompanyService;
 import com.wxj.service.UserService;
 import com.wxj.util.JsonWebTokenUtil;
 import com.wxj.util.RedisUtil;
@@ -30,6 +28,9 @@ import java.util.*;
 
 public class StatelessAuthorizingRealm extends AuthorizingRealm {
     private Logger logger = Logger.getLogger(StatelessAuthorizingRealm.class);
+
+    @Autowired
+    CompanyService companyService;
 
     @Autowired
     UserService userService;
@@ -88,7 +89,9 @@ public class StatelessAuthorizingRealm extends AuthorizingRealm {
         //未获取到授权信息，认为还未登录成功，执行登录验证
         String password = statelessToken.getPassword();
         String domain = statelessToken.getDomain();
-        User user = userService.getUserByUserNameAndDomain(statelessToken.getUsername(),statelessToken.getDomain());
+        Company company = companyService.getCompanyByDomain(String.valueOf(statelessToken.getDomain()));
+        Integer companyId = company.getId();
+        User user = userService.getUserByCompanyIdAndAccount(companyId,company.getAccount());
         if (!ValidateUtil.isNullOrEmpty(user)) {
             if (!user.getPassword().equals(password)) {
                 //密码验证失败

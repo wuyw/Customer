@@ -351,7 +351,7 @@ public class RedisUtil {
     }
 
 //    demo
-//    public void setUserInfo(User user) {
+//    public void setUserInfo(Company user) {
 //        set(RedisUtil.REDIS_KEY + "user_info:" + user.getUser_id(), JSONObject.toJSONString(user));
 //    }
 //

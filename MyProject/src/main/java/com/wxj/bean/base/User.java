@@ -1,24 +1,35 @@
 package com.wxj.bean.base;
 
+import com.wxj.util.ValidateUtil;
+
 /**
+ *
  * Created by WangXiaojian on 2018/3/14 0014.
  *
  */
 public class User {
 
-    private Integer id; //企业账号ID
+    private Integer id; //客服人员ID
 
-    private String companyName; //企业公司名称
+    private Integer companyId; //公司ID
 
-    private String account; //登录账号邮箱
+    private String account; //登录账号
 
-    private String password; //账号密码
+    private String name; //姓名
 
-    private String companyDomain; //企业域名
+    private String nickname; //昵称
 
     private String mobile; //手机号
 
     private String email; //邮箱
+
+    private String password; //密码
+
+    private Integer role; //角色（1超级管理员，2普通客服，3工单客服）
+
+    private Integer maxReception; //最大接待量
+
+    private int isDel;//是否删除 0否 1是
 
     public Integer getId() {
         return id;
@@ -28,12 +39,12 @@ public class User {
         this.id = id;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     public String getAccount() {
@@ -44,20 +55,20 @@ public class User {
         this.account = account;
     }
 
-    public String getPassword() {
-        return password;
+    public String getName() {
+        return name;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCompanyDomain() {
-        return companyDomain;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setCompanyDomain(String companyDomain) {
-        this.companyDomain = companyDomain;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getMobile() {
@@ -74,5 +85,41 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
+    }
+
+    public Integer getMaxReception() {
+        return maxReception;
+    }
+
+    public void setMaxReception(Integer maxReception) {
+        this.maxReception = maxReception;
+    }
+
+    public int getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(int isDel) {
+        this.isDel = isDel;
+    }
+
+    public boolean isValid() {
+        return !ValidateUtil.isEmpty(account) && !ValidateUtil.isEmpty(name) && !ValidateUtil.isEmpty(nickname) && !ValidateUtil.isEmpty(password) && !ValidateUtil.isEmpty(role) && !ValidateUtil.isEmpty(maxReception);
     }
 }

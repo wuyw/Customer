@@ -2,10 +2,12 @@ package com.wxj.controller;
 
 import com.wxj.bean.LoginUser;
 import com.wxj.bean.ResponseBean;
-import com.wxj.bean.base.User;
+import com.wxj.bean.base.Company;
 //import com.sluan.config.rabbitmq1.CallBackSender;
+import com.wxj.bean.base.User;
 import com.wxj.log.Log;
 import com.wxj.log.LogAspect;
+import com.wxj.service.CompanyService;
 import com.wxj.service.UserService;
 import com.wxj.util.LogUtil;
 import com.wxj.util.RedisUtil;

@@ -9,9 +9,7 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.context.annotation.Scope;
 
-/**
- * Created by 杨莫 on 2018/2/5.
- */
+
 
 @Configuration
 public class RabbitConfig1 {

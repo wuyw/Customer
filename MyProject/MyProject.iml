@@ -116,5 +116,7 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-aop:1.5.8.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.12.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.8.11" level="project" />
+    <orderEntry type="library" name="Maven: com.aliyun:aliyun-java-sdk-core:3.2.8" level="project" />
+    <orderEntry type="library" name="Maven: com.aliyun:aliyun-java-sdk-dysmsapi:1.1.0" level="project" />
   </component>
 </module>

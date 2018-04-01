@@ -1,5 +1,6 @@
 package com.wxj.util;
 
+import com.wxj.bean.base.Company;
 import com.wxj.bean.base.User;
 import com.wxj.bean.shiro.ShiroUser;
 import org.apache.shiro.subject.Subject;

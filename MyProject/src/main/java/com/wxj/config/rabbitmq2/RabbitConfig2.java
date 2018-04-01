@@ -13,10 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-/**
- * Created by 杨莫 on 2018/2/5.
- */
-
 @Configuration
 public class RabbitConfig2 {
 

@@ -2,7 +2,7 @@ package com.wxj.shiro;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wxj.bean.ResponseBean;
-import com.wxj.service.UserService;
+import com.wxj.service.CompanyService;
 import com.wxj.util.RedisUtil;
 import com.wxj.util.ValidateUtil;
 import org.apache.shiro.web.filter.AccessControlFilter;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class StatelessAccessControlFilter extends AccessControlFilter {
 
     @Autowired
-    UserService userService;
+    CompanyService userService;
 
     @Autowired
     RedisUtil redisUtil;
@@ -50,16 +50,16 @@ public class StatelessAccessControlFilter extends AccessControlFilter {
         HttpServletRequest req = (HttpServletRequest) request;
         String url = req.getRequestURI();
         //对特殊请求直接放行，登录，资源文件
-        if (url.equals("/user/login") || url.equals("/") || url.contains("/resources/")|| url.contains("/static/")) {
+        if (url.equals("/user/login") || url.contains("/regist/") || url.contains("/resources/")|| url.contains("/static/")) {
             return true;
         }else {
             String method=req.getMethod();
             if (method.equalsIgnoreCase("POST")){
-                if (url.equals("/user/login/out")){
-
-                } else {
-                    return false;
+                if (url.equals("/user/login/out")) {
                 }
+                /*else {
+                   return false;
+                }*/
             }
         }
         String jwt = req.getHeader("Authorization");
