@@ -43,34 +43,9 @@ public class ResponseBean {
     public final static Integer CODE_DB_ERROR = 208;
 
     /**
-     * 区域名重复
+     * 值已存在
      */
-    public final static Integer CODE_AREA_NAME_EXIST=209;
-
-    /**
-     * 公司名重复
-     */
-    public final static Integer CODE_COMPANY_NAME_EXIST=210;
-
-    /**
-     * 站点名重复
-     */
-    public final static Integer CODE_SITE_EXIST=211;
-
-    /**
-     * 设备id重复
-     */
-    public final static Integer CODE_DEVICEID_EXIST = 225;
-
-    /**
-     * 类型名称重复
-     */
-    public final static Integer CODE_MODEL_EXIST = 226;
-
-    /**
-     * 角色名重复
-     */
-    public final static Integer CODE_ROLE_EXIST=227;
+    public final static Integer CODE_Value_EXIST=209;
 
     /**
      * 密码重复或不对

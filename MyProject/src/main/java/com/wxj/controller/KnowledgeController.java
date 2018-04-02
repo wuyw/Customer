@@ -65,4 +65,28 @@ public class KnowledgeController {
         knowledgePoint.setCompanyId(companyId);
         return knowledgeService.getPointListByParams(knowledgePoint,page,perPage);
     }
+
+    /**
+     * 通过ID查询知识点
+     * @param id
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/point/info")
+    @ResponseBody
+    ResponseBean getPointById(@RequestParam Integer id){
+        return knowledgeService.getPointById(id);
+    }
+
+
+    /**
+     * 删除知识点
+     * @param ids
+     * @return
+     */
+    @RequestMapping(method = RequestMethod.GET, value = "/point/delete")
+    @ResponseBody
+    ResponseBean delPoint(@RequestParam String ids){
+        return knowledgeService.delPoint(ids);
+    }
+
 }

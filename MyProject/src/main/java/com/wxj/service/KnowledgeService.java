@@ -1,6 +1,7 @@
 package com.wxj.service;
 
 
+import com.sun.org.apache.regexp.internal.RE;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.KnowledgePoint;
 import com.wxj.bean.dto.KnowledgePointDto;
@@ -37,4 +38,18 @@ public interface KnowledgeService {
      * @return
      */
     ResponseBean getPointListByParams(KnowledgePoint knowledgePoint,Integer page,Integer perPage);
+
+    /**
+     * 通过ID查询知识点
+     * @param id
+     * @return
+     */
+    ResponseBean getPointById(Integer id);
+
+    /**
+     * 删除知识点
+     * @param ids
+     * @return
+     */
+    ResponseBean delPoint(String ids);
 }

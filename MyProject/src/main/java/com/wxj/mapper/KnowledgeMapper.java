@@ -80,6 +80,36 @@ public interface KnowledgeMapper {
             "AND title content CONCAT('%','${content}','%' )  " +
             "</if> " +
             "LIMIT #{start},#{end}" +
-            "</script")
+            "</script>")
     List<KnowledgePoint> getPointListByParams(KnowledgePoint knowledgePoint,@Param("start")Integer start,@Param("end")Integer end);
+
+    /**
+     * 通过ID查询知识点
+     * @param id
+     * @return
+     */
+    @Select("SELECT id,company_id AS companyId,title,create_time AS createTime,`status`,start_time AS startTime,end_time AS endTime,content,edit_time AS editTime " +
+            "FROM knowledge_point " +
+            "WHERE id = #{id} AND is_del = 0")
+    KnowledgePoint getPointById(@Param("id") Integer id);
+
+
+    /**
+     * 删除知识点
+     * @param id
+     * @return
+     */
+    @Select("UPDATE knowledge_point SET is_del = 1 WHERE id = #{id}")
+    int delPoint(@Param("id") Integer id);
+
+
+    /**
+     * 通过ID查询知识点
+     * @param title
+     * @return
+     */
+    @Select("SELECT id,company_id AS companyId,title,create_time AS createTime,`status`,start_time AS startTime,end_time AS endTime,content,edit_time AS editTime " +
+            "FROM knowledge_point " +
+            "WHERE title = #{title} AND is_del = 0 AND company_id = #{companyId}")
+    KnowledgePoint getPointByTitle(@Param("title") String title,@Param("companyId") Integer companyId);
 }

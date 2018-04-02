@@ -50,6 +50,12 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         if(!knowledgePoint.isValid()){
             responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
         }
+        //重复性验证
+        KnowledgePoint knowledgePoint1 = knowledgeMapper.getPointByTitle(knowledgePoint.getTitle(),companyId);
+        if (!ValidateUtil.isEmpty(knowledgePoint1)){
+            responseBean.setCode(ResponseBean.CODE_Value_EXIST);
+            return responseBean;
+        }
         //执行插入操作
         int i = knowledgeMapper.insertKnowledge(knowledgePoint,companyId);
         if ( i <= 0){
@@ -101,7 +107,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         //执行查询操作
         List<KnowledgePoint> pointList = knowledgeMapper.getPointList(companyId,start,end);
         if (pointList.isEmpty()){
-            responseBean.setCode(ResponseBean.CODE_NOAUTH);
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
             return responseBean;
         }
         //获取知识点总数
@@ -133,7 +139,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
         //执行查询操作
         List<KnowledgePoint> pointList = knowledgeMapper.getPointListByParams(knowledgePoint,start,end);
         if (pointList.isEmpty()){
-            responseBean.setCode(ResponseBean.CODE_NOAUTH);
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
             return responseBean;
         }
         //获取知识点总数
@@ -146,4 +152,46 @@ public class KnowledgeServiceImpl implements KnowledgeService {
     }
 
 
+    /**
+     * 通过ID查询知识点
+     * @param id
+     * @return
+     */
+    public ResponseBean getPointById(Integer id){
+        ResponseBean responseBean = new ResponseBean();
+        Map<String, Object> result = new HashMap<>();
+        //判断参数是否为空
+        if (id == null){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        //执行查询操作
+        KnowledgePoint knowledgePoint = knowledgeMapper.getPointById(id);
+        if (ValidateUtil.isEmpty(knowledgePoint)){
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
+            return responseBean;
+        }
+        result.put("point",knowledgePoint);
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        responseBean.setResult(result);
+        return responseBean;
+    }
+
+    public ResponseBean delPoint(String ids){
+        ResponseBean responseBean = new ResponseBean();
+        String[] idArray = ids.split(",");
+        if (idArray.length == 0){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        for (int i = 0;i<= idArray.length;i++){
+            int j = knowledgeMapper.delPoint(Integer.valueOf(idArray[i]));
+            if(j <= 0) {
+                responseBean.setCode(ResponseBean.CODE_FAIL);
+                return responseBean;
+            }
+        }
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        return responseBean;
+    }
 }

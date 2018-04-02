@@ -1,5 +1,7 @@
 package com.wxj.bean.base;
 
+import com.wxj.util.ValidateUtil;
+
 import java.util.Date;
 
 /**
@@ -11,13 +13,15 @@ public class StandardQuestion {
 
     private Integer id; //问题ID
 
+    private Integer companyId;//公司ID
+
     private Integer knowledgePointId; //知识点ID
 
     private String title; //问题标题
 
     private String answer; //问题答案
 
-    private Integer status; //状态（0失效，1有效）
+    private Integer status; //是否长久有效
 
     private Date createTime; //创建时间
 
@@ -25,12 +29,24 @@ public class StandardQuestion {
 
     private Date endTime; //结束时间
 
+    private Integer isDel;//是否删除
+
+    private Date delTime;//删除时间
+
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Integer companyId) {
+        this.companyId = companyId;
     }
 
     public Integer getKnowledgePointId() {
@@ -87,5 +103,25 @@ public class StandardQuestion {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
+    }
+
+    public Integer getIsDel() {
+        return isDel;
+    }
+
+    public void setIsDel(Integer isDel) {
+        this.isDel = isDel;
+    }
+
+    public Date getDelTime() {
+        return delTime;
+    }
+
+    public void setDelTime(Date delTime) {
+        this.delTime = delTime;
+    }
+
+    public boolean isValid() {
+        return !ValidateUtil.isEmpty(title) && !ValidateUtil.isEmpty(answer) && !ValidateUtil.isEmpty(status);
     }
 }
