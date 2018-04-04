@@ -1,5 +1,6 @@
 package com.wxj.controller;
 
+import com.wxj.bean.Request.RequestPage;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.User;
 import com.wxj.bean.dto.UserDto;
@@ -30,14 +31,15 @@ public class UserController {
 
     /**
      * 查询客服人员列表分页
-     * @param page
-     * @param perPage
+     * @param requestPage
      * @return
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/list")
     @ResponseBody
-    public ResponseBean userList(@RequestHeader(value = "page") Integer page,@RequestHeader(value = "perPage") Integer perPage) {
+    public ResponseBean userList(@RequestBody RequestPage requestPage) {
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        Integer page = requestPage.getPage();
+        Integer perPage = requestPage.getPerPage();
         return userService.getUserList(page,perPage,companyId);
     }
 

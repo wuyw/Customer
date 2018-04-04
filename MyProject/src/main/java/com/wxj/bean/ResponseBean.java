@@ -52,6 +52,10 @@ public class ResponseBean {
      */
     public final static Integer CODE_PASSWORD_EXIST=228;
 
+    public final static Integer CODE_account_EXIST=210;
+
+    public final static Integer CODE_domain_EXIST=211;
+
     /**
      * 当前时间戳，秒
      */

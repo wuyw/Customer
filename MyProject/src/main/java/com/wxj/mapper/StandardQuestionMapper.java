@@ -2,10 +2,9 @@ package com.wxj.mapper;
 
 
 import com.wxj.bean.base.StandardQuestion;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface StandardQuestionMapper {
@@ -28,7 +27,30 @@ public interface StandardQuestionMapper {
      */
     @Select("SELECT id,company_id AS companyId,knowledge_point_id AS knowledgePointId,create_time AS createTime,start_time AS startTime,end_time AS endTime,status,title,answer " +
             "FROM standard_question " +
-            "WHERE company_id = #{comapnyId} AND title = #{title} ")
+            "WHERE company_id = #{companyId} AND title = #{title} AND is_del  = 0")
     StandardQuestion getStaQuestionByTitle(@Param("title") String title,@Param("companyId") Integer companyId);
 
+
+    /**
+     * 分页获取问题列表
+     * @param companyId
+     * @param start
+     * @param end
+     * @return
+     */
+    @Select("SELECT id,company_id AS companyId,knowledge_point_id AS knowledgePointId,create_time AS createTime,start_time AS startTime,end_time AS endTime,status,title,answer " +
+            "FROM standard_question " +
+            "WHERE company_id = #{companyId} AND is_del = 0 " +
+            "LIMIT #{start},#{end}")
+    List<StandardQuestion> getStaQuestionList(@Param("companyId") Integer companyId,@Param("start") Integer start,@Param("end") Integer end);
+
+    /**
+     * 删除问题
+     * @param id
+     * @param companyId
+     * @return
+     */
+    @Update("UPDATE standard_question SET is_del = 1,del_time = Now() " +
+            "WHERE id = #{id} AND company_id = #{companyId}")
+    int delStaQuestion(@Param("id") Integer id,@Param("companyId") Integer companyId);
 }

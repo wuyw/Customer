@@ -89,11 +89,31 @@ public class CompanyServiceImpl implements CompanyService {
      */
     public ResponseBean saveCompany(Company company){
         ResponseBean responseBean = new ResponseBean();
+
         //用户填写的信息是否为空
         if (!company.isValid()) {
             responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
             return responseBean;
         }
+
+        //验证企业域和账号邮箱是否存在
+
+        Company companyForDomain = new Company();
+        companyForDomain.setCompanyDomain(company.getCompanyDomain());
+        List<Company> userList2 = companyMapper.getCompany(companyForDomain);
+        if (!userList2.isEmpty()){
+            responseBean.setCode(ResponseBean.CODE_domain_EXIST);
+            return responseBean;
+        }
+
+        Company companyForAccount = new Company();
+        companyForAccount.setAccount(company.getAccount());
+        List<Company> userList = companyMapper.getCompany(companyForAccount);
+        if (!userList.isEmpty()){
+            responseBean.setCode(ResponseBean.CODE_account_EXIST);
+            return responseBean;
+        }
+
         company.setLinkman("超级管理员");//联系人默认超级管理员
         //插入Company
         int i = companyMapper.saveCompany(company);

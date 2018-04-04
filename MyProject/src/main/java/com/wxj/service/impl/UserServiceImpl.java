@@ -39,6 +39,7 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     public ResponseBean insertUser(User user){
+        //账号重复性验证
         ResponseBean responseBean = new ResponseBean();
         //判断信息是否为空
         if (!user.isValid()){
@@ -128,8 +129,8 @@ public class UserServiceImpl implements UserService {
             responseBean.setCode(ResponseBean.CODE_NOAUTH);
             return responseBean;
         }
-        int numPage = getUserCount(companyId);
-        result.put("numPage",numPage);
+        int total = getUserCount(companyId);
+        result.put("total",total);
         result.put("userList",userList);
         responseBean.setCode(ResponseBean.CODE_SUCCESS);
         responseBean.setResult(result);
@@ -182,7 +183,7 @@ public class UserServiceImpl implements UserService {
         Integer end = perPage*page;
         List<User> userList = userMapper.getUserListByParams(user.getCompanyId(),user.getRole(),user.getName(),user.getNickname(),user.getAccount(),user.getMobile(),start,end);
         if (userList.isEmpty()){
-            responseBean.setCode(ResponseBean.CODE_NOAUTH);
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
             return responseBean;
         }
         result.put("userList",userList);

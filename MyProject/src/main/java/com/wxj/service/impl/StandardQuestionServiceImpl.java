@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -38,6 +39,11 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
     @Autowired
     AssQuestionMapper assQuestionMapper;
 
+    /**
+     * 新增问题
+     * @param standardQuestionDto
+     * @return
+     */
     public ResponseBean insertStaQuestion(StandardQuestionDto standardQuestionDto){
         ResponseBean responseBean = new ResponseBean();
         Map<String, Object> result = new HashMap<>();
@@ -105,4 +111,58 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
         return responseBean;
     }
 
+
+    /**
+     * 分页获取问题列表
+     * @param companyId
+     * @param page
+     * @param perPage
+     * @return
+     */
+    public ResponseBean getStaQuestionList(Integer companyId,Integer page,Integer perPage){
+        ResponseBean responseBean = new ResponseBean();
+        Map<String, Object> result = new HashMap<>();
+        //判断参数有效性
+        if (companyId ==  null){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        Integer start = (page-1)*perPage;
+        Integer end = perPage*page;
+        //分页查询
+        List<StandardQuestion> staQuestionList = standardQuestionMapper.getStaQuestionList(companyId,start,end);
+        if (staQuestionList.isEmpty()){
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
+            return responseBean;
+        }
+        result.put("staQuestionList",staQuestionList);
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        responseBean.setResult(result);
+        return responseBean;
+    }
+
+    /**
+     * 删除问题
+     * @param ids
+     * @return
+     */
+    @Override
+    public ResponseBean delStaQuestion(Integer[] ids,Integer companyId) {
+        ResponseBean responseBean = new ResponseBean();
+        //验证参数有效性
+        if (ids.length == 0) {
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        for (int i = 0; i < ids.length; i++) {
+            //删除问题
+             int j = standardQuestionMapper.delStaQuestion(ids[i],companyId);
+
+            //删除问题相似问题
+
+
+            //删除问题关联问题
+        }
+            return responseBean;
+    }
 }

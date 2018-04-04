@@ -3,10 +3,7 @@ package com.wxj.mapper;
 
 import com.wxj.bean.base.SimilarQuestionRelation;
 import com.wxj.bean.base.StandardQuestion;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface SimilarQuestionMapper {
@@ -28,5 +25,15 @@ public interface SimilarQuestionMapper {
     @Insert("INSERT INTO similar_question_relation (company_id,standard_question_id,title,create_time) VALUES " +
             "(#{companyId},#{standardQuestionId},#{title},Now())")
     int insertSimQuestion(SimilarQuestionRelation similarQuestionRelation);
+
+    /**
+     * 删除标准问题对应的相似问题
+     * @param standardQuestionId
+     * @param companyId
+     * @return
+     */
+    @Update("UPDATE similar_question_relation SET is_del = 0,del_time = Now() " +
+            "WHERE standard_question_id = #{standardQuestionId} AND company_id  = #{companyID}")
+    int delSimQuestion(@Param("standardQuestionId") Integer standardQuestionId,@Param("companyId") Integer companyId);
 
 }

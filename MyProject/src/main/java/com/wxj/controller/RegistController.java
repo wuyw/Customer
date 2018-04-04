@@ -3,8 +3,10 @@ package com.wxj.controller;
 
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
+import com.wxj.bean.RegistUser;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.Company;
+import com.wxj.bean.base.User;
 import com.wxj.service.CompanyService;
 import com.wxj.util.RedisUtil;
 import com.wxj.util.SMSSendUtil;
@@ -13,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Random;
 
 /**
@@ -38,12 +41,13 @@ public class RegistController {
 
     /**
      * 发送验证码
-     * @param phone
+     * @param registUser
      * @return
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/regist/sendCode")
     @ResponseBody
-    public ResponseBean sendCode(String phone){
+    public ResponseBean sendCode(@RequestBody RegistUser registUser){
+        String phone = registUser.getPhone();
         ResponseBean responseBean = new ResponseBean();
         //手机号为空判断
         if (ValidateUtil.isEmpty(phone)){
@@ -70,6 +74,29 @@ public class RegistController {
         return responseBean;
     }
 
+    /**
+     *验证码验证
+     * @param registUser
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/regist/codeVerify")
+    @ResponseBody
+    public ResponseBean codeVerify(@RequestBody RegistUser registUser){
+        ResponseBean responseBean = new ResponseBean();
+        String phone = registUser.getPhone();
+        String code = registUser.getCode();
+        if (ValidateUtil.isEmpty(code) || ValidateUtil.isEmpty(phone)){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        //String regCode = redisUtil.get(phone).toString();
+        if (redisUtil.get(phone) == null ||!redisUtil.get(phone).toString().equals(code)){
+            responseBean.setCode(ResponseBean.CODE_FAIL);
+        }else{
+            responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        }
+        return responseBean;
+    }
     /**
      * 验证企业信息
      * @param company
@@ -99,7 +126,7 @@ public class RegistController {
      * @return
      */
     public static String getCode(){
-        String str="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        String str="0123456789";
         StringBuilder sb=new StringBuilder(4);
         for(int i=0;i<4;i++)
         {
