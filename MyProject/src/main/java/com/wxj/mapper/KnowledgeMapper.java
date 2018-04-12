@@ -15,8 +15,8 @@ public interface KnowledgeMapper {
      * @param knowledgePoint
      * @return
      */
-    @Insert("INSERT INTO knowledge_point (company_id,title,create_time,start_time,end_time,content,`status`) VALUES (#{companyId},#{title},Now(),#{startTime},#{endTime},#{content},#{status})")
-    int insertKnowledge(KnowledgePoint knowledgePoint,@Param("companyId")Integer companyId);
+    @Insert("INSERT INTO knowledge_point (company_id,title,create_time,start_time,end_time,content,`status`,is_del) VALUES (#{companyId},#{title},Now(),#{startTime},#{endTime},#{content},#{status},0)")
+    int insertKnowledge(KnowledgePoint knowledgePoint);
 
     /**
      * 更新知识点
@@ -104,7 +104,7 @@ public interface KnowledgeMapper {
 
 
     /**
-     * 通过ID查询知识点
+     * 通过title查询知识点
      * @param title
      * @return
      */

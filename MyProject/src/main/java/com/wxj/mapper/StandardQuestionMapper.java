@@ -14,8 +14,8 @@ public interface StandardQuestionMapper {
      * @param standardQuestion
      * @return
      */
-    @Insert("INSERT INTO standard_question (company_id,knowledge_point_id,create_time,start_time,end_time,status,title,answer) VALUES " +
-            "(#{companyId},#{knowledgePointId},Now(),#{startTime},#{endTime},#{status},#{title},#{answer}" +
+    @Insert("INSERT INTO standard_question (company_id,knowledge_point_id,create_time,start_time,end_time,status,title,answer,is_del) VALUES " +
+            "(#{companyId},#{knowledgePointId},Now(),#{startTime},#{endTime},#{status},#{title},#{answer},0" +
             ")")
     int insertStaQuestion(StandardQuestion standardQuestion);
 
@@ -53,4 +53,12 @@ public interface StandardQuestionMapper {
     @Update("UPDATE standard_question SET is_del = 1,del_time = Now() " +
             "WHERE id = #{id} AND company_id = #{companyId}")
     int delStaQuestion(@Param("id") Integer id,@Param("companyId") Integer companyId);
+
+    /**
+     * 获取问题总数
+     * @param companyId
+     * @return
+     */
+    @Select("SELECT COUNT(*) FROM standard_question WHERE company_id = #{companyId} AND is_del = 0")
+    int getQuestionCount(@Param("companyId") Integer companyId);
 }

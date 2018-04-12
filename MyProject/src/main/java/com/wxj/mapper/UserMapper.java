@@ -62,28 +62,26 @@ public interface UserMapper {
      * @param
      * @return
      */
-    @Select("<script>" +
-            "SELECT id,company_id AS companyId,account,`name`,nickname,mobile,email,`password`,role,max_reception AS maxReception,is_del AS isDel " +
+    @Select("SELECT id,company_id AS companyId,account,`name`,nickname,mobile,email,role,max_reception AS maxReception,is_del AS isDel " +
             "FROM user_info " +
             "WHERE company_id=#{companyId} AND is_del = 0 " +
-            "<if test ='role!=null'> " +
-            "AND role = #{role} " +
-            "</if> " +
-            "<if test ='name!=null'> " +
-            "AND name LIKE CONCAT('%','${name}','%' )  " +
-            "</if> " +
-            "<if test ='nickname!=null'> " +
-            "AND nickname LIKE CONCAT('%','${nickname}','%' ) " +
-            "</if> " +
-            "<if test ='account!=null'> " +
-            "AND account LIKE CONCAT('%','${account}','%' ) " +
-            "</if> " +
-            "<if test ='mobile!=null'> " +
-            "AND mobile LIKE CONCAT('%','${mobile}','%' ) " +
-            "</if> " +
-            "LIMIT #{start},#{end} " +
-            "</script> ")
-    List<User> getUserListByParams(@Param("companyId")Integer companyId,@Param("role")Integer role,@Param("name")String name,@Param("nickname")String nickname,@Param("account")String account,@Param("mobile")String mobile,@Param("start")Integer start,@Param("end")Integer end);
+            "AND (name LIKE CONCAT('%','${keywords}','%' ) OR nickname LIKE CONCAT('%','${keywords}','%' ) OR account LIKE CONCAT('%','${keywords}','%' ) " +
+            "OR mobile LIKE CONCAT('%','${keywords}','%')) "+
+            "LIMIT #{start},#{end} ")
+    List<User> getUserListByParams(@Param("keywords") String keywords,@Param("companyId")Integer companyId,@Param("start")Integer start,@Param("end")Integer end);
+
+    /**
+     * 获取模糊查询的数量
+     * @param keywords
+     * @param companyId
+     * @return
+     */
+    @Select("SELECT COUNT(*)" +
+            "FROM user_info " +
+            "WHERE company_id=#{companyId} AND is_del = 0 " +
+            "AND (name LIKE CONCAT('%','${keywords}','%' ) OR nickname LIKE CONCAT('%','${keywords}','%' ) OR account LIKE CONCAT('%','${keywords}','%' ) " +
+            "OR mobile LIKE CONCAT('%','${keywords}','%'))")
+    int getUserCountByParams(@Param("keywords") String keywords,@Param("companyId")Integer companyId);
 
     /**
      * 删除客服人员
@@ -93,4 +91,13 @@ public interface UserMapper {
     @Update("UPDATE user_info SET is_del = 1 WHERE id = #{id}")
     int delUser(Integer id);
 
+    /**
+     * 修改客服人员信息
+     * @param user
+     * @return
+     */
+    @Update("UPDATE user_info " +
+            "SET name = #{name},nickname = #{nickname},mobile = #{mobile},email = #{email},role = #{role},max_reception = #{maxReception} " +
+            "WHERE id = #{id}")
+    int updateUser(User user);
 }

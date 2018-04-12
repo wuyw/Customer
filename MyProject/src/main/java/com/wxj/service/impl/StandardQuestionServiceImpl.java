@@ -65,7 +65,7 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
         }
         //判断相似问题是否存在
         String [] simQuestion = standardQuestionDto.getSimQuestion();
-        if(simQuestion.length != 0){
+        if(simQuestion != null && simQuestion.length != 0){
             for(int i = 0;i<=simQuestion.length;i++){
                 SimilarQuestionRelation similarQuestionRelation1 = similarQuestionMapper.
                         getSimQuestionByTitle(standardQuestionDto.getTitle(),standardQuestionDto.getCompanyId());
@@ -89,7 +89,7 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
         StandardQuestion standardQuestion1 = standardQuestionMapper.getStaQuestionByTitle(standardQuestionDto.getTitle(),standardQuestionDto.getCompanyId());
 
         //添加相似问题
-        if(simQuestion.length != 0){
+        if(simQuestion != null &&simQuestion.length != 0){
             for (int k = 0;k<simQuestion.length;k++){
                 SimilarQuestionRelation similarQuestionRelation1 = new SimilarQuestionRelation();
                 similarQuestionRelation1.setCompanyId(standardQuestionDto.getCompanyId());
@@ -100,7 +100,7 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
         }
         //添加关联问题
         Integer[]  assQuestionIds = standardQuestionDto.getAssQuestion();
-        if (assQuestionIds.length != 0) {
+        if (assQuestionIds != null && assQuestionIds.length != 0) {
             AssociatedQuestionRelation associatedQuestionRelation = new AssociatedQuestionRelation();
             associatedQuestionRelation.setCompanyId(standardQuestion.getCompanyId());
             associatedQuestionRelation.setAssociatedQuestionId(assQuestionIds[i]);
@@ -135,6 +135,8 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
             responseBean.setCode(ResponseBean.CODE_NO_RESULT);
             return responseBean;
         }
+        int total = standardQuestionMapper.getQuestionCount(companyId);
+        result.put("total",total);
         result.put("staQuestionList",staQuestionList);
         responseBean.setCode(ResponseBean.CODE_SUCCESS);
         responseBean.setResult(result);

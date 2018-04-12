@@ -1,6 +1,7 @@
 package com.wxj.controller;
 
 
+import com.wxj.bean.Request.RequestObject;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.KnowledgePoint;
 import com.wxj.bean.dto.KnowledgePointDto;
@@ -18,14 +19,14 @@ public class KnowledgeController {
 
     /**
      * 新增知识点
-     * @param knowledgePointDto
+     * @param knowledgePoint
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/point/add")
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/point/add")
     @ResponseBody
-    ResponseBean insertKnowledge(KnowledgePointDto knowledgePointDto){
+    ResponseBean insertKnowledge(@RequestBody KnowledgePoint knowledgePoint){
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
-        return knowledgeService.insertKnowledge(knowledgePointDto,companyId);
+        return knowledgeService.insertKnowledge(knowledgePoint,companyId);
     }
 
     /**
@@ -33,22 +34,23 @@ public class KnowledgeController {
      * @param knowledgePointDto
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/point/update")
+    @RequestMapping(method = { RequestMethod.GET,RequestMethod.POST}, value = "/point/update")
     @ResponseBody
-    ResponseBean updateKnowledge(KnowledgePointDto knowledgePointDto){
+    ResponseBean updateKnowledge(@RequestBody KnowledgePointDto knowledgePointDto){
         return knowledgeService.updateKnowledge(knowledgePointDto);
     }
 
     /**
      * 分页查询
-     * @param page
-     * @param perPage
+     * @param requestObject
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/point/pointList")
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/point/pointList")
     @ResponseBody
-    ResponseBean getPointList(@RequestHeader(value = "page") Integer page, @RequestHeader(value = "perPage") Integer perPage){
+    ResponseBean getPointList(@RequestBody RequestObject requestObject){
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        Integer page = requestObject.getPage();
+        Integer perPage = requestObject.getPerPage();
         return knowledgeService.getPointList(companyId,page,perPage);
     }
 
@@ -58,7 +60,7 @@ public class KnowledgeController {
      * @param perPage
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/point/search")
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/point/search")
     @ResponseBody
     ResponseBean getPointListByParams(@RequestBody KnowledgePoint knowledgePoint,@RequestHeader(value = "page") Integer page, @RequestHeader(value = "perPage") Integer perPage){
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
@@ -68,12 +70,13 @@ public class KnowledgeController {
 
     /**
      * 通过ID查询知识点
-     * @param id
+     * @param knowledgePoint
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/point/info")
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/point/info")
     @ResponseBody
-    ResponseBean getPointById(@RequestParam Integer id){
+    ResponseBean getPointById(@RequestBody KnowledgePoint knowledgePoint){
+        Integer id = knowledgePoint.getId();
         return knowledgeService.getPointById(id);
     }
 
@@ -83,7 +86,7 @@ public class KnowledgeController {
      * @param ids
      * @return
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/point/delete")
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/point/delete")
     @ResponseBody
     ResponseBean delPoint(@RequestParam String ids){
         return knowledgeService.delPoint(ids);

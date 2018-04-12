@@ -1,5 +1,6 @@
 package com.wxj.service;
 
+import com.sun.org.apache.regexp.internal.RE;
 import com.wxj.bean.LoginUser;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.User;
@@ -57,10 +58,10 @@ public interface UserService {
 
     /**
      * 模糊查询
-     * @param user
+     * @param
      * @return
      */
-    ResponseBean getUserByParams(User user,Integer page,Integer perPage);
+    ResponseBean getUserByParams(String keywords,Integer companyId,Integer page,Integer perPage);
 
     /**
      * 删除客服人员
@@ -68,4 +69,11 @@ public interface UserService {
      * @return
      */
     ResponseBean delUser(Integer id);
+
+    /**
+     * 修改客服人员信息
+     * @param user
+     * @return
+     */
+    ResponseBean updateUser(User user);
 }

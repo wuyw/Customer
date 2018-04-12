@@ -39,11 +39,17 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     public ResponseBean insertUser(User user){
-        //账号重复性验证
+
         ResponseBean responseBean = new ResponseBean();
         //判断信息是否为空
         if (!user.isValid()){
             responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        //账号重复性验证
+        User userValidate = userMapper.getUserByCompanyIdAndAccount(user.getCompanyId(),user.getAccount());
+        if(!ValidateUtil.isEmpty(userValidate)){
+            responseBean.setCode(ResponseBean.CODE_Value_EXIST);
             return responseBean;
         }
         // 插入数据
@@ -171,22 +177,26 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 模糊查询
-     * @param user
+     * @param keywords
+     * @param companyId
      * @param page
      * @param perPage
+     *
      * @return
      */
-    public ResponseBean getUserByParams(User user,Integer page,Integer perPage){
+    public ResponseBean getUserByParams(String keywords,Integer companyId,Integer page,Integer perPage){
         ResponseBean responseBean = new ResponseBean();
         Map<String, Object> result = new HashMap<>();
         Integer start = (page-1)*perPage;
         Integer end = perPage*page;
-        List<User> userList = userMapper.getUserListByParams(user.getCompanyId(),user.getRole(),user.getName(),user.getNickname(),user.getAccount(),user.getMobile(),start,end);
+        List<User> userList = userMapper.getUserListByParams(keywords,companyId,start,end);
         if (userList.isEmpty()){
             responseBean.setCode(ResponseBean.CODE_NO_RESULT);
             return responseBean;
         }
+        int total = userMapper.getUserCountByParams(keywords,companyId);
         result.put("userList",userList);
+        result.put("total",total);
         responseBean.setCode(ResponseBean.CODE_SUCCESS);
         responseBean.setResult(result);
         return responseBean;
@@ -209,6 +219,27 @@ public class UserServiceImpl implements UserService {
             responseBean.setCode(ResponseBean.CODE_FAIL);
         } else {
             responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        }
+        return responseBean;
+    }
+
+    /**
+     * 修改客服人员信息
+     * @param user
+     * @return
+     */
+    public ResponseBean updateUser(User user){
+        ResponseBean responseBean = new ResponseBean();
+        //判断信息是否为空
+        if (!user.isValid()){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
+            return responseBean;
+        }
+        int i= userMapper.updateUser(user);
+        if (i > 0){
+            responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        } else {
+            responseBean.setCode(ResponseBean.CODE_FAIL);
         }
         return responseBean;
     }

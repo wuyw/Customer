@@ -1,6 +1,7 @@
 package com.wxj.controller;
 
 
+import com.wxj.bean.Request.RequestObject;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.dto.StandardQuestionDto;
 import com.wxj.service.StandardQuestionService;
@@ -30,13 +31,14 @@ public class StaQuestionController {
 
     /**
      * 分页获取问题列表
-     * @param page
-     * @param perPgae
+     * @param requestObject
      * @return
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/question/list")
     @ResponseBody
-    public ResponseBean getStaQuestionList(@RequestHeader("page") Integer page,@RequestHeader("perPage") Integer perPgae){
+    public ResponseBean getStaQuestionList(@RequestBody RequestObject requestObject){
+        Integer page = requestObject.getPage();
+        Integer perPgae = requestObject.getPerPage();
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
         return standardQuestionService.getStaQuestionList(companyId,page,perPgae);
     }

@@ -1,9 +1,8 @@
 package com.wxj.controller;
 
-import com.wxj.bean.Request.RequestPage;
+import com.wxj.bean.Request.RequestObject;
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.User;
-import com.wxj.bean.dto.UserDto;
 import com.wxj.service.UserService;
 import com.wxj.util.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,41 +30,44 @@ public class UserController {
 
     /**
      * 查询客服人员列表分页
-     * @param requestPage
+     * @param requestObject
      * @return
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/list")
     @ResponseBody
-    public ResponseBean userList(@RequestBody RequestPage requestPage) {
+    public ResponseBean userList(@RequestBody RequestObject requestObject) {
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
-        Integer page = requestPage.getPage();
-        Integer perPage = requestPage.getPerPage();
+        Integer page = requestObject.getPage();
+        Integer perPage = requestObject.getPerPage();
         return userService.getUserList(page,perPage,companyId);
     }
 
 
     /**
      * 通过ID查询客服人员信息
-     * @param id
+     * @param user
      * @return
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/info")
     @ResponseBody
-    public ResponseBean userList(@RequestParam Integer id) {
+    public ResponseBean userList(@RequestBody User user) {
+        Integer id = user.getId();
         return userService.getUserById(id);
     }
 
     /**
      * 模糊查询
-     * @param user
+     * @param requestObject
      * @return
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/search")
     @ResponseBody
-    public ResponseBean userSearch(@RequestBody User user,@RequestHeader(value = "page") Integer page,@RequestHeader(value = "perPage") Integer perPage) {
+    public ResponseBean userSearch(@RequestBody RequestObject requestObject ) {
+        String keywords = requestObject.getKeywords();
+        Integer page = requestObject.getPage();
+        Integer perPage = requestObject.getPerPage();
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
-        user.setCompanyId(companyId);
-        return userService.getUserByParams(user,page,perPage);
+        return userService.getUserByParams(keywords,companyId,page,perPage);
     }
 
     /**
@@ -74,8 +76,19 @@ public class UserController {
      */
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/delete")
     @ResponseBody
-    public ResponseBean delUser(@RequestParam Integer id){
+    public ResponseBean delUser(@RequestBody User user){
+        Integer id = user.getId();
         return userService.delUser(id);
     }
 
+    /**
+     * 修改客服人员信息
+     * @param user
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/user/update")
+    @ResponseBody
+    public ResponseBean updateUser(@RequestBody User user){
+        return userService.updateUser(user);
+    }
 }

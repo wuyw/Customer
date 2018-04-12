@@ -57,9 +57,10 @@ public class KnowledgeServiceImpl implements KnowledgeService {
             return responseBean;
         }
         //执行插入操作
-        int i = knowledgeMapper.insertKnowledge(knowledgePoint,companyId);
+        knowledgePoint.setCompanyId(companyId);
+        int i = knowledgeMapper.insertKnowledge(knowledgePoint);
         if ( i <= 0){
-            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
+            responseBean.setCode(ResponseBean.CODE_FAIL);
         } else {
             responseBean.setCode(ResponseBean.CODE_SUCCESS);
         }
@@ -96,7 +97,7 @@ public class KnowledgeServiceImpl implements KnowledgeService {
      */
     public ResponseBean getPointList(Integer companyId,Integer page,Integer perPage){
         ResponseBean responseBean = new ResponseBean();
-        Map<String, Object> result = new HashMap<>();
+         Map<String, Object> result = new HashMap<>();
         //判断参数是否为空
         if (companyId == null || page == null || perPage == null) {
             responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
@@ -111,8 +112,8 @@ public class KnowledgeServiceImpl implements KnowledgeService {
             return responseBean;
         }
         //获取知识点总数
-        int numPage = knowledgeMapper.getPointCount(companyId);
-        result.put("numPage",numPage);
+        int total = knowledgeMapper.getPointCount(companyId);
+        result.put("total",total);
         result.put("pointList",pointList);
         responseBean.setCode(ResponseBean.CODE_SUCCESS);
         responseBean.setResult(result);

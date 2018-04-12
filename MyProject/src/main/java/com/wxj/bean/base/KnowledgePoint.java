@@ -31,6 +31,10 @@ public class KnowledgePoint {
 
     private Date editTime;//更新时间
 
+    private String period;
+
+    private String[] date;
+
     public Integer getId() {
         return id;
     }
