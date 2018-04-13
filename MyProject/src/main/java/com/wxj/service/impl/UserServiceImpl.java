@@ -84,9 +84,9 @@ public class UserServiceImpl implements UserService {
         if (user.isAuthenticated()) {
             user.logout();
         }
-        Integer expire = 120;
+        Integer expire = 3*60;
         if (loginUser.getRemember_me()) {
-            expire = 43200;
+            expire = 3*24*60;
         }
         String jwt = new JsonWebTokenUtil(jwtKey).getJWTString(loginUser.getAccount(),loginUser.getCompanyDomain(), expire);
         StatelessAuthenticationToken token = new StatelessAuthenticationToken(loginUser.getAccount(),loginUser.getCompanyDomain(), loginUser.getPassword(), jwt);

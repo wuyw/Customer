@@ -83,7 +83,7 @@ public class StatelessAccessControlFilter extends AccessControlFilter {
     //登录失败时默认返回401 状态码
     private void onLoginFail(ServletResponse response) throws IOException {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
-        httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+       // httpResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         ObjectMapper mapper = new ObjectMapper();
         ResponseBean responseBean = new ResponseBean(ResponseBean.CODE_NOAUTH, "no auth.");
         httpResponse.getWriter().write(mapper.writeValueAsString(responseBean));
