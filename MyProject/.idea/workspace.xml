@@ -3,6 +3,7 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/wxj/controller/RegistController.java" line="46" />
     <bookmark url="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/UserMapper.java" line="55" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/wxj/service/StandardQuestionService.java" line="30" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f27abf0-a23e-4d15-8bb6-4a5f8be3d116" name="Default" comment="" />
@@ -19,21 +20,24 @@
       <file leaf-file-name="StaQuestionController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/controller/StaQuestionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="42" column="51" lean-forward="true" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-              <folding>
-                <marker date="1523517955821" expanded="true" signature="1388:1550" ph="{...}" />
-              </folding>
+            <state relative-caret-position="851">
+              <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CrossOriginFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/filter/CrossOriginFilter.java">
+      <file leaf-file-name="RequestObject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/Request/RequestObject.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="95">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="e#691#692#0" expanded="true" />
+                <element signature="e#717#718#0" expanded="true" />
+                <element signature="e#758#759#0" expanded="true" />
+                <element signature="e#788#789#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -41,20 +45,28 @@
       <file leaf-file-name="StandardQuestionServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="836">
-              <caret line="147" column="54" lean-forward="false" selection-start-line="147" selection-start-column="54" selection-end-line="147" selection-end-column="54" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="3330">
+              <caret line="211" column="32" lean-forward="true" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="KnowledgeMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/KnowledgeMapper.java">
+      <file leaf-file-name="StandardQuestionService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/service/StandardQuestionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="93" column="31" lean-forward="true" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="31" />
+            <state relative-caret-position="304">
+              <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResponseBean.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/ResponseBean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="537">
+              <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -63,8 +75,8 @@
       <file leaf-file-name="SimilarQuestionMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/SimilarQuestionMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+            <state relative-caret-position="646">
+              <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -73,34 +85,19 @@
       <file leaf-file-name="StandardQuestionMapper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/StandardQuestionMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="40" column="85" lean-forward="false" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="85" />
+            <state relative-caret-position="1388">
+              <caret line="83" column="109" lean-forward="true" selection-start-line="83" selection-start-column="109" selection-end-line="83" selection-end-column="109" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StatelessDefaultSubjectFactory.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessDefaultSubjectFactory.java">
+      <file leaf-file-name="UserMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/UserMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="538">
+              <caret line="67" column="58" lean-forward="false" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="58" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StandardQuestion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/base/StandardQuestion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding>
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#662#663#0" expanded="true" />
-                <element signature="e#704#705#0" expanded="true" />
-                <element signature="e#738#739#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -110,16 +107,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="133">
               <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StatelessAuthorizingRealm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessAuthorizingRealm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -199,25 +186,25 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/controller/RegistController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/impl/CompanyServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/mapper/AssQuestionMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/StandardQuestionService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/bean/Request/Request.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/bean/ResponseBean.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxj/bean/Request/RequestObject.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/mapper/KnowledgeMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/impl/KnowledgeServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/controller/KnowledgeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/bean/base/KnowledgePoint.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxj/controller/StaQuestionController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxj/mapper/StandardQuestionMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/util/SMSSendUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessAccessControlFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/mapper/SimilarQuestionMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/bean/base/StandardQuestion.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxj/bean/Request/RequestObject.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxj/mapper/StandardQuestionMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxj/service/StandardQuestionService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxj/controller/StaQuestionController.java" />
       </list>
     </option>
   </component>
@@ -235,8 +222,9 @@
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-2" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="418" />
+    <option name="y" value="272" />
     <option name="width" value="1151" />
     <option name="height" value="728" />
   </component>
@@ -256,8 +244,6 @@
     </navigator>
     <panes>
       <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -395,6 +381,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -586,11 +574,12 @@
       <workItem from="1523518697078" duration="3989000" />
       <workItem from="1523583046217" duration="10261000" />
       <workItem from="1523866720539" duration="6894000" />
+      <workItem from="1523891902087" duration="2986000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="216942000" />
+    <option name="totallyTimeSpent" value="219928000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -602,12 +591,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -619,7 +607,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20469083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1881663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -627,11 +615,12 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13804348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13804348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42173913" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -863,19 +852,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java</url>
-          <line>53</line>
+          <line>59</line>
           <properties />
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java</url>
-          <line>88</line>
+          <line>94</line>
           <properties />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java</url>
-          <line>129</line>
+          <line>135</line>
           <properties />
           <option name="timeStamp" value="78" />
         </line-breakpoint>
@@ -887,13 +876,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java</url>
-          <line>159</line>
+          <line>179</line>
           <properties />
           <option name="timeStamp" value="80" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java</url>
-          <line>77</line>
+          <line>83</line>
           <properties />
           <option name="timeStamp" value="81" />
         </line-breakpoint>
@@ -933,13 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/base/SimilarQuestionRelation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/util/ValidateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -953,7 +935,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="82" column="38" lean-forward="false" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,12 +950,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
           <caret line="31" column="24" lean-forward="false" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/AssQuestionMapper.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/service/StandardQuestionService.java" />
     <entry file="jar://$USER_HOME$/.m2/repository/io/jsonwebtoken/jjwt/0.6.0/jjwt-0.6.0.jar!/io/jsonwebtoken/impl/DefaultClaims.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
@@ -1015,15 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1330">
           <caret line="77" column="38" lean-forward="false" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="19" column="8" lean-forward="false" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,7 +1019,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="18" column="4" lean-forward="true" selection-start-line="18" selection-start-column="4" selection-end-line="49" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,11 +1034,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="61" column="31" lean-forward="true" selection-start-line="61" selection-start-column="31" selection-end-line="61" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/Request/RequestObject.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
@@ -1132,14 +1099,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/ResponseBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/controller/CompanyController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -1159,7 +1118,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
           <caret line="56" column="47" lean-forward="false" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1175,7 +1133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1187,26 +1144,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessAuthorizingRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/filter/CrossOriginFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
+        <state relative-caret-position="304">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessAccessControlFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/KnowledgeMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="1691">
+          <caret line="93" column="31" lean-forward="false" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -1219,60 +1168,145 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/controller/StaQuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="42" column="51" lean-forward="true" selection-start-line="42" selection-start-column="51" selection-end-line="42" selection-end-column="51" />
-          <folding>
-            <marker date="1523517955821" expanded="true" signature="1388:1550" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/base/StandardQuestion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="646">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#704#705#0" expanded="true" />
-            <element signature="e#738#739#0" expanded="true" />
+            <marker date="1523891771768" expanded="true" signature="767:778" ph=" { " />
+            <marker date="1523891771768" expanded="true" signature="788:794" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="829:840" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="853:859" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="894:905" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="922:928" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="977:988" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1015:1021" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1063:1074" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1098:1104" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1167:1178" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1219:1225" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1255:1266" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1279:1285" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1325:1336" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1355:1361" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1392:1403" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1417:1423" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1465:1476" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1497:1503" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1535:1546" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1560:1566" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1609:1620" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1641:1647" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1680:1691" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1709:1715" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1763:1774" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1803:1809" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1841:1852" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1869:1875" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1921:1932" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="1959:1965" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="1995:2006" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="2021:2027" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="2069:2080" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="2103:2109" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="2140:2151" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="2164:2170" ph=" }" />
+            <marker date="1523891771768" expanded="false" signature="2211:2222" ph=" { " />
+            <marker date="1523891771768" expanded="false" signature="2241:2247" ph=" }" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/StandardQuestionMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/base/SimilarQuestionRelation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="40" column="85" lean-forward="false" selection-start-line="40" selection-start-column="69" selection-end-line="40" selection-end-column="85" />
+        <state relative-caret-position="95">
+          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/ResponseBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="537">
+          <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="41" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/SimilarQuestionMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="28" lean-forward="false" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="646">
+          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/KnowledgeMapper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/bean/Request/RequestObject.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="93" column="31" lean-forward="true" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="31" />
+        <state relative-caret-position="95">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#691#692#0" expanded="true" />
+            <element signature="e#717#718#0" expanded="true" />
+            <element signature="e#758#759#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/controller/StaQuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="851">
+          <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessAuthorizingRealm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/shiro/StatelessAccessControlFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="67" column="58" lean-forward="false" selection-start-line="67" selection-start-column="13" selection-end-line="67" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/mapper/StandardQuestionMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1388">
+          <caret line="83" column="109" lean-forward="true" selection-start-line="83" selection-start-column="109" selection-end-line="83" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/service/StandardQuestionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="18" column="23" lean-forward="true" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxj/service/impl/StandardQuestionServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="836">
-          <caret line="147" column="54" lean-forward="false" selection-start-line="147" selection-start-column="54" selection-end-line="147" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="3330">
+          <caret line="211" column="32" lean-forward="true" selection-start-line="211" selection-start-column="32" selection-end-line="211" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

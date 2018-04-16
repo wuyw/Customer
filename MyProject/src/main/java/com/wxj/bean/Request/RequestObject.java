@@ -7,6 +7,7 @@ public class RequestObject {
     private Integer page;
     private Integer perPage;
     private String keywords;
+    private Integer[] ids;
 
     public Integer getPage() {
         return page;
@@ -30,5 +31,13 @@ public class RequestObject {
 
     public void setKeywords(String keywords) {
         this.keywords = keywords;
+    }
+
+    public Integer[] getIds() {
+        return ids;
+    }
+
+    public void setIds(Integer[] ids) {
+        this.ids = ids;
     }
 }

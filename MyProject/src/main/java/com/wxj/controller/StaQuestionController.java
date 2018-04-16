@@ -42,4 +42,34 @@ public class StaQuestionController {
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
         return standardQuestionService.getStaQuestionList(companyId,page,perPgae);
     }
+
+    /**
+     * 删除问题
+     * @param requestObject
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/question/delete")
+    @ResponseBody
+    public ResponseBean delStaQuestion(@RequestBody RequestObject requestObject){
+        Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        return standardQuestionService.delStaQuestion(requestObject.getIds(),companyId);
+    }
+
+    /**
+     * 模糊查询
+     * @param requestObject
+     * @return
+     */
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/question/select")
+    @ResponseBody
+    public ResponseBean getStaQuestionListByKeywords(@RequestBody RequestObject requestObject){
+        Integer page = requestObject.getPage();
+        Integer perPgae = requestObject.getPerPage();
+        String keywords = requestObject.getKeywords();
+        Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
+        return standardQuestionService.getStaQuestionListByKeywords(keywords,companyId,page,perPgae);
+    }
+
+
+
 }

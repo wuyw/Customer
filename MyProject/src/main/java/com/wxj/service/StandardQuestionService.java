@@ -29,4 +29,14 @@ public interface StandardQuestionService {
      * @return
      */
     ResponseBean delStaQuestion(Integer[] ids,Integer companyId);
+
+    /**
+     * 模糊查询
+     * @param companyId
+     * @param page
+     * @param perPage
+     * @return
+     */
+    ResponseBean getStaQuestionListByKeywords(String keywords,Integer companyId,Integer page,Integer perPage);
+
 }

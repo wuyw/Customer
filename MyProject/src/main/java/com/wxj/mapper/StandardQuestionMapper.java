@@ -61,4 +61,25 @@ public interface StandardQuestionMapper {
      */
     @Select("SELECT COUNT(*) FROM standard_question WHERE company_id = #{companyId} AND is_del = 0")
     int getQuestionCount(@Param("companyId") Integer companyId);
+
+    /**
+     * 模糊查询获取列表（分页）
+     * @param companyId
+     * @param start
+     * @param end
+     * @return
+     */
+    @Select("SELECT id,company_id AS companyId,knowledge_point_id AS knowledgePointId,create_time AS createTime,start_time AS startTime,end_time AS endTime,status,title,answer " +
+            "FROM standard_question " +
+            "WHERE company_id = #{companyId} AND is_del = 0 AND title LIKE CONCAT('%','${keywords}','%') " +
+            "LIMIT #{start},#{end}")
+    List<StandardQuestion> getStaQuestionListByKeywords(@Param("keywords") String keywords,@Param("companyId") Integer companyId,@Param("start") Integer start,@Param("end") Integer end);
+
+    /**
+     * 获取问题总数
+     * @param companyId
+     * @return
+     */
+    @Select("SELECT COUNT(*) FROM standard_question WHERE company_id = #{companyId} AND is_del = 0 AND title LIKE CONCAT('%','${keywords}','%')")
+    int getQuestionCountByKeywords(@Param("keywords") String keywords,@Param("companyId") Integer companyId);
 }

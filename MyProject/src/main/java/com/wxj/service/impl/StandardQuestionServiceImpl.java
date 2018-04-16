@@ -179,12 +179,64 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
         for (int i = 0; i < ids.length; i++) {
             //删除问题
              int j = standardQuestionMapper.delStaQuestion(ids[i],companyId);
-
+            if (j < 0){
+                responseBean.setCode(ResponseBean.CODE_FAIL);
+                return responseBean;
+            }
             //删除问题相似问题
-
-
+            int k = similarQuestionMapper.delSimQuestion(ids[i],companyId);
+            if (k < 0){
+                responseBean.setCode(ResponseBean.CODE_FAIL);
+                return responseBean;
+            }
             //删除问题关联问题
+
         }
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        return responseBean;
+    }
+
+    /**
+     * 模糊查询
+     * @param companyId
+     * @param page
+     * @param perPage
+     * @return
+     */
+    public ResponseBean getStaQuestionListByKeywords(String keywords,Integer companyId,Integer page,Integer perPage){
+        ResponseBean responseBean = new ResponseBean();
+        Map<String, Object> result = new HashMap<>();
+        //判断参数有效性
+        if (companyId ==  null){
+            responseBean.setCode(ResponseBean.CODE_NOTVALIDATE);
             return responseBean;
+        }
+        Integer start = (page-1)*perPage;
+        Integer end = perPage*page;
+        //分页查询
+        List<StandardQuestion> staQuestionList = standardQuestionMapper.getStaQuestionListByKeywords(keywords,companyId,start,end);
+        for( int i = 0;i<staQuestionList.size();i++){
+            Integer pointId = staQuestionList.get(i).getKnowledgePointId();
+            if(pointId == null){
+                staQuestionList.get(i).setPoint(null);
+            }else{
+                //通过ID去查知识点
+                KnowledgePoint knowledgePoint = knowledgeMapper.getPointById(pointId);
+                staQuestionList.get(i).setPoint(knowledgePoint.getTitle());
+            }
+
+        }
+
+
+        if (staQuestionList.isEmpty()){
+            responseBean.setCode(ResponseBean.CODE_NO_RESULT);
+            return responseBean;
+        }
+        int total = standardQuestionMapper.getQuestionCountByKeywords(keywords,companyId);
+        result.put("total",total);
+        result.put("staQuestionList",staQuestionList);
+        responseBean.setCode(ResponseBean.CODE_SUCCESS);
+        responseBean.setResult(result);
+        return responseBean;
     }
 }
