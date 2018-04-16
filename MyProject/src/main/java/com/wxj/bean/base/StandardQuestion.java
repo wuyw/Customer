@@ -33,6 +33,16 @@ public class StandardQuestion {
 
     private Date delTime;//删除时间
 
+    private String point;
+
+    public String getPoint() {
+        return point;
+    }
+
+    public void setPoint(String point) {
+        this.point = point;
+    }
+
     public Integer getId() {
         return id;
     }

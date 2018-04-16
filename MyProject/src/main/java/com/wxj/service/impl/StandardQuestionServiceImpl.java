@@ -3,10 +3,12 @@ package com.wxj.service.impl;
 
 import com.wxj.bean.ResponseBean;
 import com.wxj.bean.base.AssociatedQuestionRelation;
+import com.wxj.bean.base.KnowledgePoint;
 import com.wxj.bean.base.SimilarQuestionRelation;
 import com.wxj.bean.base.StandardQuestion;
 import com.wxj.bean.dto.StandardQuestionDto;
 import com.wxj.mapper.AssQuestionMapper;
+import com.wxj.mapper.KnowledgeMapper;
 import com.wxj.mapper.SimilarQuestionMapper;
 import com.wxj.mapper.StandardQuestionMapper;
 import com.wxj.service.StandardQuestionService;
@@ -17,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -35,6 +38,9 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
 
     @Autowired
     SimilarQuestionMapper similarQuestionMapper;
+
+    @Autowired
+    KnowledgeMapper knowledgeMapper;
 
     @Autowired
     AssQuestionMapper assQuestionMapper;
@@ -131,6 +137,20 @@ public class StandardQuestionServiceImpl implements StandardQuestionService {
         Integer end = perPage*page;
         //分页查询
         List<StandardQuestion> staQuestionList = standardQuestionMapper.getStaQuestionList(companyId,start,end);
+        for( int i = 0;i<staQuestionList.size();i++){
+            Integer pointId = staQuestionList.get(i).getKnowledgePointId();
+
+            if(pointId != null){
+                //通过ID去查知识点
+                KnowledgePoint knowledgePoint = knowledgeMapper.getPointById(pointId);
+                staQuestionList.get(i).setPoint(knowledgePoint.getTitle());
+            }else{
+                staQuestionList.get(i).setPoint(null);
+            }
+
+        }
+
+
         if (staQuestionList.isEmpty()){
             responseBean.setCode(ResponseBean.CODE_NO_RESULT);
             return responseBean;

@@ -22,8 +22,8 @@ public interface SimilarQuestionMapper {
      * @param similarQuestionRelation
      * @return
      */
-    @Insert("INSERT INTO similar_question_relation (company_id,standard_question_id,title,create_time) VALUES " +
-            "(#{companyId},#{standardQuestionId},#{title},Now())")
+    @Insert("INSERT INTO similar_question_relation (company_id,standard_question_id,title,create_time,is_del) VALUES " +
+            "(#{companyId},#{standardQuestionId},#{title},Now(),0)")
     int insertSimQuestion(SimilarQuestionRelation similarQuestionRelation);
 
     /**
