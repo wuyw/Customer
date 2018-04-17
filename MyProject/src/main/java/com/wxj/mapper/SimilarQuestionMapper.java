@@ -32,8 +32,8 @@ public interface SimilarQuestionMapper {
      * @param companyId
      * @return
      */
-    @Update("UPDATE similar_question_relation SET is_del = 0,del_time = Now() " +
-            "WHERE standard_question_id = #{standardQuestionId} AND company_id  = #{companyID}")
+    @Update("UPDATE similar_question_relation SET is_del = 1,del_time = Now() " +
+            "WHERE standard_question_id = #{standardQuestionId} AND company_id  = #{companyId}")
     int delSimQuestion(@Param("standardQuestionId") Integer standardQuestionId,@Param("companyId") Integer companyId);
 
 }

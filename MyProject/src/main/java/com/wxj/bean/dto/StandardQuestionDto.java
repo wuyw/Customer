@@ -4,7 +4,7 @@ import com.wxj.bean.base.StandardQuestion;
 
 /**
  *
- * Created by WangXiaojian on 2018/3/14 0014.
+ * Created by WangXiaojian on 2018/3/14.
  *
  */
 public class StandardQuestionDto extends StandardQuestion {

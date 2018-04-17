@@ -38,9 +38,9 @@ public class StaQuestionController {
     @ResponseBody
     public ResponseBean getStaQuestionList(@RequestBody RequestObject requestObject){
         Integer page = requestObject.getPage();
-        Integer perPgae = requestObject.getPerPage();
+        Integer perPage = requestObject.getPerPage();
         Integer companyId = SecurityUtils.getLoginUser().getCompanyId();
-        return standardQuestionService.getStaQuestionList(companyId,page,perPgae);
+        return standardQuestionService.getStaQuestionList(companyId,page,perPage);
     }
 
     /**
